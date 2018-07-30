@@ -5,61 +5,55 @@
 </head>
 <body>
 	<script type="text/javascript">
+	/**
+     * @author Kevin Argueta and Tammy 
+     */
 		var input = [1,4,4,5,6,4,5,5,10,0,0,1,7,3,6,4,10,0,2,8,6];
 
 
 		function returnScore(input){
 			
-			input.push(0);
+		input.push(0);
 
-			arrEven = [],
-   			arrOdd = [];
-			for (var i=0;i<input.length-1;i++){
+			// arrEven = [],
+   // 			arrOdd = [];
+
+   			var ourFrames = [];
+   			var totalScore = input.reduce(
+   				(accumulator,currentValue)=> accumulator+currentValue
+   				);
+   			// console.log(totalScore);
+			for (var i=0;i<input.length;i++){
 			    if (i%2==0) {
-			        
-			        arrEven.push(input[i]);
-			    }
-			    else {
-			    	arrOdd.push(input[i]);
-			        
-			        
+			        ourFrames.push([input[i],input[i+1]])
 			    }
 			}
 
-			//I define when to treat as strike, spare, or regular and add all together
-			var totalScore = 0;
-			while {i=0, 1 < arrOdd.length-1, i++}
 
-			function findTotal {
-			if arrEven[i] = 10 {
-			    arrEven[i] +  arrEven[i+1] +  arrOdd[i + 1],  
-			    i++; 
-			    and add to totalScore;}
 
-			if arrEven[i] + arrOdd[i] = 10 {
-			    arrEven[i] + arrOdd[i] + arrEven[i+1], 
-			     i++; 
-			    and add to totalScore;}
 
-			else if arrEven[i] + arrOdd[i] < 10 {
-			    arrEven[i] + arrOdd[i]
-			     i++; 
-			    and add to totalScore;}
-			    
-			   end loop
-			    
-			//but treat the last frame differently, because it behaves differently
-			    
-			    totalScore arrEven[9] + arrEven[10] +arrOdd[9]
-			    
-			    return(totalScore)
-  
+			console.log(ourFrames);
 
-//I split the array into even index and odd index new arrays
+			console.log(ourFrames.length);
 
+			console.log('just want to randomly index into 2D',ourFrames[4][0]);
+
+			for (var i = 0; i<ourFrames.length-2;i++){
+				if(ourFrames[i][0]==10){
+					totalScore += ourFrames[i+1][0]+ourFrames[i+1][1];
+				}
+				else if(ourFrames[i][0]+ourFrames[i][1]==10){
+					totalScore += ourFrames[i+1][0];
+				}
+			}
+
+			return totalScore;
 
 
 		}
+		
+		var result = returnScore(input);
+		console.log(result);
 		
 	</script>
 </body>
